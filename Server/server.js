@@ -4,17 +4,17 @@
 const http = require("http");
 // require("fs") is used to work with file system
 const fs = require("fs");
-// It helps to find what path you are serving and also help to find the extension of files e.g .html, .css or .js file extentions are available in the path
+// It helps to find what path you are serving and also helps to find the extension of files e.g .html, .css or .js file extentions are available in the path
 const path = require("path");
 
-// port availabl on the computer. e.g. port 8000, 6000, 8080, 3000, 3001. Make sure the port that you are using to build the Nginx server is not being used by you computer to run any other program
+// port availabl on the computer. e.g. port 8000, 6000, 8080, 3000, 3001. Make sure the port that you are using to build the Nginx server is not being used by your computer to run any other program
 
 const port = 3000;
 // createServer() always listen to the traffics that is coming from the port
 const server = http.createServer((req, res) => {
   // path.join(__dirname) gives the entire path and __dirname gives the current directory path
   // join() method gives you the absolute path where the files are
-  // if the request is "/" then will show the index.html file and if request is about.html or contact.html thet show that file to user
+  // if the request is "/" then will show the index.html file and if request is about.html or contact.html then show that file to user
   // req = is recieved from the user or client like /, about.html, contact.html
   const filePath = path.join(
     __dirname,
@@ -26,6 +26,7 @@ const server = http.createServer((req, res) => {
   //   extname() gives the extension of the file e.g. .html, .css and .js
   const exName = String(path.extname(filePath)).toLowerCase();
   // What type of file is being supported by the server?
+  // Create an object of extensions that are supported by the Nginx server
   const mimeType = {
     ".html": "text/html",
     ".css": "text/css",
